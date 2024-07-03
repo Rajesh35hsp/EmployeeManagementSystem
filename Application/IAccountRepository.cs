@@ -11,5 +11,6 @@ namespace Application
     public interface IAccountRepository
     {
         Task<IdentityResult> CreateUserAsync(SignUpModel user);
+        Task<string> LoginAsync(SignInModel user);
     }
 }

@@ -1,5 +1,7 @@
 using Application;
+using Infrastructure;
 using Infrastructure.Extensions;
+using Microsoft.AspNetCore.Identity;
 
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -21,6 +23,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
+
 builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();

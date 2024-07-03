@@ -21,9 +21,8 @@ namespace Infrastructure.Extensions
                 options.UseSqlServer(configuration.GetConnectionString("EmpDbConnectionString"));
             });
 
-            services.AddIdentityCore<IdentityUser>()
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<EmsDbContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<EmsDbContext>().AddDefaultTokenProviders();
 
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IAccountRepository, AccountRepository>();

@@ -23,5 +23,10 @@ namespace Application
             return await _accountRepository.CreateUserAsync(signUpModel);
 
         }
+
+        public Task<string> LoginAsync(SignInModel user)
+        {
+            return _accountRepository.LoginAsync(user);
+        }
     }
 }

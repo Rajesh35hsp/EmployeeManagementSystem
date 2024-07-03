@@ -2,6 +2,7 @@
 using Domain;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace API.Controllers
 {
@@ -25,6 +26,17 @@ namespace API.Controllers
                 return Ok();
             }
             return BadRequest(result.Errors);
+        }
+
+        [HttpPost("signin")]
+        public async Task<IActionResult> Login(SignInModel signinModel)
+        {
+            var result = await _accountService.LoginAsync(signinModel);
+            if (!result.IsNullOrEmpty())
+            {
+                return Ok(result);
+            }
+            return Unauthorized();
         }
     }
 }

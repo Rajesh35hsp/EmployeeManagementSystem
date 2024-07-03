@@ -15,3 +15,14 @@ Content-Type: application/json
 }
 
 ### 
+
+POST {{API_HostAddress}}/api/Account/signin/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Email": "test1@test.com",
+  "Password": "Test@123"
+}
+
+### 
