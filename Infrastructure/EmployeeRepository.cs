@@ -5,38 +5,15 @@ namespace Infrastructure
 {
     public class EmployeeRepository : IEmployeeRepository
     {
+        private readonly EmsDbContext _emsDbContext;
+        public EmployeeRepository(EmsDbContext emsDbContext)
+        {
+            _emsDbContext = emsDbContext;
+        }
         public List<Employee> GetEmployees()
         {
-            return new List<Employee>()
-            {
-                {
-                    new Employee()
-                    {
-                        Id = 1,
-                        Name = "John",
-                        Salary = 1000,
-                        Age = 25
-                    }
-                },
-                {
-                    new Employee()
-                    {
-                        Id = 2,
-                        Name = "Jane",
-                        Salary = 2000,
-                        Age = 30
-                    }
-                },
-                {
-                    new Employee()
-                    {
-                        Id = 3,
-                        Name = "Doe",
-                        Salary = 3000,
-                        Age = 35
-                    }
-                }
-            };
+            var s = _emsDbContext.Employees.ToList();
+            return s;
         }
     }
 }

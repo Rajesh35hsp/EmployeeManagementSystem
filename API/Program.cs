@@ -1,5 +1,5 @@
 using Application;
-using Infrastructure;
+using Infrastructure.Extensions;
 
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -20,7 +20,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
-builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
