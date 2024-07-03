@@ -4,3 +4,14 @@ GET {{API_HostAddress}}/api/Employee/
 Accept: application/json
 
 ###
+POST {{API_HostAddress}}/api/Account/signup/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "Email": "test1@test.com",
+  "Password": "Test@123",   
+  "ConfirmPassword" :"Test@123"
+}
+
+### 

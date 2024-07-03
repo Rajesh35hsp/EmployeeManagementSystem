@@ -1,4 +1,5 @@
 ﻿using Application;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,7 +21,12 @@ namespace Infrastructure.Extensions
                 options.UseSqlServer(configuration.GetConnectionString("EmpDbConnectionString"));
             });
 
+            services.AddIdentityCore<IdentityUser>()
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<EmsDbContext>();
+
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IAccountRepository, AccountRepository>();
         }
 
     }
