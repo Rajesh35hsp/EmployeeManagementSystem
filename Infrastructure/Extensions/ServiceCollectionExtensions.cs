@@ -19,6 +19,8 @@ namespace Infrastructure.Extensions
             services.AddDbContext<EmsDbContext>(options =>
             {
                 options.UseSqlServer(configuration.GetConnectionString("EmpDbConnectionString"));
+                //log sql queries
+                options.LogTo(Console.WriteLine);
             });
 
             services.AddIdentity<IdentityUser, IdentityRole>()

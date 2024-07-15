@@ -4,12 +4,14 @@ using Infrastructure.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using System.Text;
+using System.Text.Json.Serialization;
 
 
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
+
 
 builder.Services.AddCors(options =>
 {
@@ -19,7 +21,7 @@ builder.Services.AddCors(options =>
                           policy.WithOrigins("http://localhost:4200").AllowAnyMethod();
                       });
 });
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(x=>x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
