@@ -1,4 +1,5 @@
 ﻿using Application;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,6 +17,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult GetEmployees()
         {
             return Ok(_employeeService.GetEmployees());
